@@ -4,12 +4,20 @@
     <div class="bg-pets absolute inset-0 z-10"></div>
     <div class="bg-icon absolute inset-0 z-20"></div>
     <div class="btns-wrap">
-      <button class="btn3-1"></button>
-      <button class="btn3-2"></button>
-      <button class="btn3-3"></button>
-      <button class="btn3-4"></button>
-      <button class="btn3-5"></button>
+      <div
+        v-for="index in [1, 2, 3, 4, 5]"
+        :key="index"
+        :class="'btn3-' + index"
+        @click="showInfo(index)"
+      ></div>
     </div>
+    <info-pet
+      v-if="currentPet != null"
+      :list-pets="dataPets"
+      :currentPet="currentPet"
+      @handle-close="handleClose"
+      @change-slide="changeSlide"
+    />
   </div>
 </template>
 <style scoped>
@@ -71,3 +79,105 @@
   height: 130px;
 }
 </style>
+<script>
+import InfoPet from "./InfoPets/Pets.vue";
+import ManmoImge from "../../assets/images/pets/Manmo.png";
+import YangidonImge from "../../assets/images/pets/Yangidon.png";
+import PlacobiImge from "../../assets/images/pets/Placobi.png";
+import KatargasImge from "../../assets/images/pets/Katargas.png";
+import ClobgorImge from "../../assets/images/pets/Clobgor.png";
+export default {
+  components: { InfoPet },
+  methods: {
+    showInfo(index) {
+      this.currentPet = index - 1;
+    },
+    handleClose() {
+      this.currentPet = null;
+      document.querySelector("body").classList.remove("overflow-hidden");
+    },
+    changeSlide(index) {
+      this.showInfo(index + 1);
+    },
+  },
+  data() {
+    return {
+      currentPet: null,
+      dataPets: [
+        {
+          title: "Manmo Family",
+          type: "Defense",
+          desc: "An active trickster who isn't bothered by the cold.",
+          image: ManmoImge,
+          skill: "Ancient Power",
+          desKill: "Heals 1 ally based on their Max HP, decreases DMG received.",
+          tags: [
+            "#LongFur",
+            "#Bus",
+            "#Friendly",
+            "#SkinnierThanPrachius",
+            "#BeCareful",
+            "#BodySlam",
+          ],
+          urlEmbed: "https://www.youtube.com/embed/DedswdcXdCs",
+        },
+        {
+          title: "Yangidon Family",
+          type: "Attack",
+          desc: "A competitive-born fighter.",
+          image: YangidonImge,
+          skill: "Become a Star!",
+          desKill: "Deals heavy DMG to 1 target.",
+          tags: [
+            "#FiveBrothers",
+            "#PeckingOrder",
+            "#Fights",
+            "#Brave",
+            "#FullBodyWeapon",
+            "#FightingSpirit",
+            "#Force",
+            "#EndlessAssault",
+            "#Powerful",
+          ],
+          urlEmbed: "https://www.youtube.com/embed/AbaIqxUwvP8",
+        },
+        {
+          title: "Placobi Family",
+          type: "Attack",
+          desc: "A sensitive and cautious cave dweller.",
+          image: PlacobiImge,
+          skill: "Round the World",
+          desKill: "Standby 1 turn and deal heavy DMG that ignores defense.",
+          tags: [
+            "#Dad", "#Mom", "#Brother", "#Sister", "#All", "#Family", "#SonicWaves", "#Communication", "#Eyesight", "#Bad", "#PlacobiFlights", "#TheSunBurns", "#NightOwl"
+          ],
+          urlEmbed: "https://www.youtube.com/embed/wkzevbzSl1A",
+        },
+        {
+          title: "Katargas Family",
+          type: "Defense",
+          desc: "A passive yet self-sacrificing slob.",
+          image: KatargasImge,
+          skill: "Defensive Curl",
+          desKill: "Increases defense, Reflect Chance and Reflect Effect. Heal reflected DMG.",
+          tags: [
+            "#StrongestShield", "#Kaki", "#BullyYou", "#RoundnRound", "#ILoveMyTree",
+          ],
+          urlEmbed: "https://www.youtube.com/embed/EaVTNt6kktE",
+        },{
+          title: "Clobgor Family",
+          type: "Attack",
+          desc: "An anger-prone meanie.",
+          image: ClobgorImge,
+          skill: "I'm Angry!",
+          desKill: "Deals DMG to 1 target and an enemy behind it.",
+          tags: [
+            "#BigBoned", "#AngerIssues", "#Fist", "#Spin", "#NeabyObjects","#AtRisk"
+          ],
+          urlEmbed: "https://www.youtube.com/embed/g7V36110CMQ",
+        },
+      ],
+    };
+  },
+};
+</script>

@@ -2,23 +2,24 @@
   <div class="fixed inset-0 z-50">
     <div class="modal-window">
       <div class="modal-content bg-info-pets">
-        <div class="content_wrapper mx-auto text-center space-y-8">
+        <div class="content_wrapper mx-auto text-center">
           <div
             class="close-btn w-12 h-12 float-right cursor-pointer"
             @click="handleClose"
           ></div>
           <div class="summary-wrap">
-            <div class="text-6xl text-yellow-700 font-bold">
+            <div class="text-6xl text-yellow-700 font-bold my-4">
               {{ listPets[currentPet].title }}
             </div>
             <div class="text-3xl text-yellow-600">
               {{ listPets[currentPet].desc }}
             </div>
-            <slider-pets :data-slider="listPets" :current-pet="currentPet" />
+            <slider-pets :data-slider="listPets" :current-pet="currentPet" @change-slide="changeSlide" />
           </div>
-          <div class="skill-wrap">
-            <div class="text-center font-bold text-3xl mt-20 mb-10" style="color: #5c362c">
-              Injection Time
+          <div class="skill-wrap relative">
+            <div class="font-bold text-3xl" style="color: #f3edcd;">Try Skill</div>
+            <div class="text-center font-bold text-3xl my-10" style="color: #5c362c">
+              {{listPets[currentPet].skill}}
             </div>
             <iframe
               width="720"
@@ -28,6 +29,9 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
+            <div class="text-center font-bold text-3xl mt-8 py-10" style="color: #5c362c;">
+              {{listPets[currentPet].desKill}}
+            </div>
           </div>
         </div>
       </div>
@@ -52,7 +56,7 @@
 .summary-wrap {
   position: relative;
   padding: 0 30px;
-  height: 897px;
+  height: 886px;
 }
 .modal-window {
   overflow: auto;
@@ -89,10 +93,14 @@ export default {
   beforeDestroy() {
       document.querySelector("body").classList.remove("overflow-hidden");
   },
+  emits: ['changeSlide'],
   methods: {
     handleClose() {
       this.$emit("handleClose");
     },
+    changeSlide(changeCurrentPet){
+        this.$emit('changeSlide',changeCurrentPet)
+    }
   },
 };
 </script>

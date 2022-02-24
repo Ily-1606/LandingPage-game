@@ -7,6 +7,7 @@
       :navigation="true"
       :modules="modules"
       class="mySwiper"
+      @slideChange="onSlideChange"
     >
         <swiper-slide v-for="(pet,index) in dataSlider" :key="index" class="text-white text-5xl text-center space-y-4">
           <slider-item :data-item="pet"  />
@@ -40,6 +41,12 @@ export default {
   data(){
       return {
            modules: [Autoplay, Navigation],
+      }
+  },
+  emits: ['changeSlide'],
+  methods: {
+      onSlideChange(e){
+         this.$emit('changeSlide',e.activeIndex)
       }
   }
 };
