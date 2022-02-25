@@ -45,6 +45,7 @@
   background-repeat: no-repeat;
 }
 .map-wrapper {
+  max-width: 100%;
   width: 967px;
   height: 837px;
   margin: 50px 0 0 -50px;

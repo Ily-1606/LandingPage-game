@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-screen h-screen">
+  <div class="relative w-full h-screen">
     <div class="bg-background absolute inset-0 space-y-10">
       <div class="bg-logo mt-10 mx-auto"></div>
       <div class="text-white text-7xl text-center font-bold des mx-auto">
