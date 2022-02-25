@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "swiper": "^8.0.6",
+    "vite-svg-loader": "^3.1.2",
     "vue": "^3.2.25"
   },
   "devDependencies": {

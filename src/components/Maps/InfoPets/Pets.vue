@@ -4,7 +4,7 @@
       <div class="modal-content bg-info-pets">
         <div class="content_wrapper mx-auto text-center">
           <div
-            class="close-btn w-12 h-12 float-right cursor-pointer"
+            class="close-btn w-12 h-12 float-right cursor-pointer p-4"
             @click="handleClose"
           ></div>
           <div class="summary-wrap">

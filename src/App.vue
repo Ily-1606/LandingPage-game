@@ -6,11 +6,13 @@ import FeaturePage from "./components/Info/Feature.vue";
 import StoryPage from "./components/Info/Story.vue";
 import MapPage from "./components/Info/Map.vue";
 import CharacterPage from "./components/Info/Character.vue";
+import Header from './components/header.vue'
 </script>
 
 <template>
   <div>
-    <home-page />
+    <Header />
+    <home-page class="mt-16" />
     <feature-page />
     <story-page />
     <map-page />
@@ -41,7 +43,7 @@ export default {
           meta.remove();
         }
       }
-    },
+    }
   },
 };
 </script>

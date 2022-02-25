@@ -9,7 +9,11 @@
       <div class="mx-auto bg-play" @click="toogleModal"></div>
       <download />
     </div>
-    <modal :show-modal="showModal" @toogle-modal="toogleModal" :url-embed="APP_TRAILER" />
+    <modal
+      :show-modal="showModal"
+      @toogle-modal="toogleModal"
+      :url-embed="APP_TRAILER"
+    />
   </div>
 </template>
 <style scoped>
@@ -34,8 +38,8 @@
 }
 </style>
 <script>
-import Download from './Download.vue'
-import Modal from './Modal.vue'
+import Download from "./Download.vue";
+import Modal from "./Modal.vue";
 export default {
   components: { Download, Modal },
   data() {
@@ -44,11 +48,12 @@ export default {
       showModal: false,
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     toogleModal() {
       this.showModal = !this.showModal;
-    },
+    }
   },
 };
 </script>
